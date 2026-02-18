@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ace Link Player Helper</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Ace Link Player Helper</h1>
+      <p class="subtitle">Paste an Ace Stream ID or an <code>acestream://</code> link to get ready-to-open playback links.</p>
+
+      <label for="streamInput">Ace Stream ID or link</label>
+      <div class="input-row">
+        <input
+          id="streamInput"
+          type="text"
+          placeholder="Example: acestream://0123456789abcdef0123456789abcdef01234567"
+          autocomplete="off"
+        />
+        <button id="buildBtn" type="button">Build Links</button>
+      </div>
+
+      <div id="error" class="error" aria-live="polite"></div>
+
+      <section id="results" class="results hidden" aria-live="polite">
+        <h2>Playback Links</h2>
+
+        <div class="card">
+          <h3>Ace Stream protocol</h3>
+          <p>Opens directly in apps registered for <code>acestream://</code> (Ace Link, Ace Stream, mpv script, etc.).</p>
+          <div class="link-row">
+            <a id="acestreamAnchor" href="#" target="_blank" rel="noreferrer">Open acestream:// link</a>
+            <button id="copyAcestream" type="button">Copy</button>
+          </div>
+          <code id="acestreamText"></code>
+        </div>
+
+        <div class="card">
+          <h3>Local engine HTTP stream</h3>
+          <p>Use if your local engine is running on port <code>6878</code> (common with Ace Link Docker setup).</p>
+          <div class="link-row">
+            <a id="httpAnchor" href="#" target="_blank" rel="noreferrer">Open HTTP stream URL</a>
+            <button id="copyHttp" type="button">Copy</button>
+          </div>
+          <code id="httpText"></code>
+        </div>
+
+        <div class="card">
+          <h3>HLS manifest URL</h3>
+          <p>Useful for players/web tools that prefer HLS.</p>
+          <div class="link-row">
+            <a id="hlsAnchor" href="#" target="_blank" rel="noreferrer">Open HLS manifest URL</a>
+            <button id="copyHls" type="button">Copy</button>
+          </div>
+          <code id="hlsText"></code>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
