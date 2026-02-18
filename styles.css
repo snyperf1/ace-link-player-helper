@@ -99,6 +99,23 @@ button:hover {
   padding: 0.9rem;
 }
 
+.player-card {
+  margin-top: 1rem;
+}
+
+.player-status {
+  margin-bottom: 0.8rem;
+  color: var(--muted);
+}
+
+#videoPlayer {
+  width: 100%;
+  max-height: 62vh;
+  background: #020617;
+  border: 1px solid #374151;
+  border-radius: 10px;
+}
+
 .card h3 {
   margin: 0 0 0.45rem;
 }

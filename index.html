@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ace Link Player Helper</title>
+    <title>Ace Stream Viewer</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <main class="container">
-      <h1>Ace Link Player Helper</h1>
-      <p class="subtitle">Paste an Ace Stream ID or an <code>acestream://</code> link to get ready-to-open playback links.</p>
+      <h1>Ace Stream Viewer</h1>
+      <p class="subtitle">Paste an Ace Stream ID or an <code>acestream://</code> link to play it in-browser (via local engine) and open fallback links.</p>
 
       <label for="streamInput">Ace Stream ID or link</label>
       <div class="input-row">
@@ -19,10 +19,16 @@
           placeholder="Example: acestream://0123456789abcdef0123456789abcdef01234567"
           autocomplete="off"
         />
-        <button id="buildBtn" type="button">Build Links</button>
+        <button id="buildBtn" type="button">Load Stream</button>
       </div>
 
       <div id="error" class="error" aria-live="polite"></div>
+
+      <section id="playerCard" class="card player-card hidden" aria-live="polite">
+        <h2>Player</h2>
+        <p id="playerStatus" class="player-status">Waiting for a stream...</p>
+        <video id="videoPlayer" controls playsinline></video>
+      </section>
 
       <section id="results" class="results hidden" aria-live="polite">
         <h2>Playback Links</h2>
@@ -59,6 +65,7 @@
       </section>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
     <script src="app.js"></script>
   </body>
 </html>
